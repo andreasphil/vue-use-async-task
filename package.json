@@ -1,0 +1,17 @@
+{
+  "name": "vue-use-async-task",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4",
+    "vitest": "^0.24.5"
+  },
+  "dependencies": {
+    "vue": "^3.2.41"
+  }
+}
