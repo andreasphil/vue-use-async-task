@@ -1,6 +1,6 @@
 {
   "name": "vue-use-async-task",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Composable for state and results of asynchronous tasks in Vue",
   "author": "Andreas Philippi",
   "license": "MIT",
