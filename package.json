@@ -5,10 +5,13 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest",
+    "demo": "vite dev"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^3.2.0",
     "typescript": "^4.6.4",
+    "vite": "^3.2.4",
     "vitest": "^0.24.5"
   },
   "dependencies": {
