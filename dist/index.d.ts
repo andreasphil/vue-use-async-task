@@ -1,8 +1,8 @@
 import { type Ref } from "vue";
 /** Returns the parameters of a generic function T */
-export declare type InferArgs<T> = T extends (...t: [...infer Params]) => any ? Params : never;
+export type InferArgs<T> = T extends (...t: [...infer Params]) => any ? Params : never;
 /** Returns the return value of a generic function T */
-export declare type InferReturn<T> = T extends (...t: any) => infer Return ? Return : never;
+export type InferReturn<T> = T extends (...t: any) => infer Return ? Return : never;
 /**
  * Returns a wrapper for an asynchronous function that keeps track of the
  * loading state, errors, and return value of the function.
