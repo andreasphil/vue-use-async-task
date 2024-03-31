@@ -1,6 +1,6 @@
+import { useAsyncTask } from "@/useAsyncTask";
 import { afterAll, beforeEach, describe, expect, test, vi } from "vitest";
 import { ref } from "vue";
-import { useAsyncTask } from "./index";
 
 describe("useAsyncTask", () => {
   beforeEach(() => {

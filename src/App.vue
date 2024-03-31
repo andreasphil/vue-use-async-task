@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAsyncTask } from "../index";
+import { useAsyncTask } from "@/useAsyncTask";
 
 /* -------------------------------------------------- *
  * Dummy task for demonstration                       *
@@ -50,3 +50,25 @@ function finish(success: boolean) {
     <li><strong>error</strong>: {{ error }}</li>
   </ul>
 </template>
+
+<style>
+body {
+  font-family: ui-sans, sans-serif;
+  font-size: 1.05em;
+  line-height: 1.5em;
+  margin: auto;
+  max-width: 70ch;
+  padding: 4rem 1rem;
+  > :first-child { margin-top: 0; }
+  > :last-child { margin-bottom: 0; }
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 2em 0 1rem;
+}
+article, blockquote, header, footer, ol, ul, hr, p, pre {
+  margin: 1.5em 0;
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+</style>

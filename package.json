@@ -1,28 +1,33 @@
 {
-  "name": "vue-use-async-task",
+  "name": "@andreasphil/vue-use-async-task",
   "version": "0.2.0",
   "description": "Composable for state and results of asynchronous tasks in Vue",
   "author": "Andreas Philippi",
   "license": "MIT",
   "type": "module",
-  "main": "dist/index.js",
   "repository": "https://github.com/andreasphil/vue-use-async-task",
   "files": [
-    "dist/**/*"
+    "dist"
   ],
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/useAsyncTask.js",
+      "types": "./dist/useAsyncTask.d.ts"
+    }
+  },
   "scripts": {
-    "build": "tsc",
-    "demo": "vite dev",
-    "test": "vitest"
+    "dev": "vite",
+    "test": "vitest run",
+    "build": "vite build; tsc -p tsconfig.lib.json",
+    "preversion": "pnpm test && pnpm build; git add dist/"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.4.2",
     "vite": "^5.1.6",
     "vitest": "^1.4.0"
-  },
-  "dependencies": {
-    "vue": "^3.4.21"
   }
 }
