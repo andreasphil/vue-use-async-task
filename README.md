@@ -1,5 +1,5 @@
 <h1 align="center">
-  `useAsyncTask` 🚂
+  useAsyncTask 🚂
 </h1>
 
 <p align="center">
@@ -13,7 +13,7 @@
 
 ## Installation
 
-```
+```sh
 npm i github:andreasphil/vue-use-async-task#<tag>
 ```
 
@@ -74,3 +74,19 @@ const { run: runTaskB } = useAsyncTask(taskB, { isLoading, error });
 ```
 
 Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both will store their error in `error`.
+
+## Development
+
+The library is compatible with [Vue 3](https://vuejs.org) and built with [Vite](https://vitejs.dev). Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Vitest](https://vitest.dev). The following commands are available for developing and running the demo:
+
+```
+pnpm run dev       # Start development server
+pnpm run build     # Create a production bundle
+pnpm run test      # Run tests
+```
+
+## Credits
+
+This library uses a number of open source packages listed in [package.json](package.json).
+
+Thanks 🙏
