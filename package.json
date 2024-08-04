@@ -18,16 +18,17 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest run",
+    "test:watch": "vitest",
     "build": "vite build; tsc -p tsconfig.lib.json",
     "preversion": "pnpm test && pnpm build; git add dist/"
   },
   "dependencies": {
-    "vue": "^3.4.21"
+    "vue": "^3.4.35"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.7",
-    "vitest": "^1.4.0"
+    "@vitejs/plugin-vue": "^5.1.2",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
+    "vitest": "^2.0.5"
   }
 }
