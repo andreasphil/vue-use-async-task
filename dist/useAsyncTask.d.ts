@@ -41,11 +41,11 @@ shared?: {
      */
     run: (...args: InferArgs<F>) => Promise<[Awaited<InferReturn<F>> | undefined, undefined] | [undefined, E]>;
     /** Return value of the task */
-    data: Ref<Awaited<InferReturn<F>> | undefined>;
+    data: Ref<Awaited<InferReturn<F>> | undefined, Awaited<InferReturn<F>> | undefined>;
     /** True while the task is running */
-    isLoading: Ref<boolean>;
+    isLoading: Ref<boolean, boolean>;
     /** Will receive the exception thrown by the task if one occurs */
-    error: Ref<E | undefined> | Ref<import("vue").UnwrapRef<E> | undefined>;
+    error: Ref<E | undefined, E | undefined> | Ref<import("vue").UnwrapRef<E> | undefined, E | import("vue").UnwrapRef<E> | undefined>;
     /** True if an exception has been thrown */
     hasError: import("vue").ComputedRef<boolean>;
 };
