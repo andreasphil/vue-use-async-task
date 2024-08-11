@@ -9,9 +9,10 @@
 - ✅ Manages `isLoading`, return values and errors automatically
 - 🦾 Works with any function that returns a promise
 - 👌 Fully typed and tested
-- 🙏 Inspired by [SWR's](https://swr.vercel.app) API
 
 ## Installation
+
+With a package manager:
 
 ```sh
 npm i github:andreasphil/vue-use-async-task#<tag>
@@ -19,13 +20,13 @@ npm i github:andreasphil/vue-use-async-task#<tag>
 
 ## Usage
 
-This package contains a Vue composable called `useAsyncTask` that returns a number of reactive variables commonly needed for handling state etc. when doing asynchronous work in components:
+`useAsyncTask` is a Vue composable that returns a number of reactive variables commonly needed for handling state etc. when doing asynchronous work in components:
 
 ```ts
 const { isLoading, data, error, hasError, run } = useAsyncTask(myAsyncTask);
 ```
 
-Example with Vue:
+Example:
 
 ```vue
 <script setup lang="ts">
@@ -53,14 +54,14 @@ The following reactive variables will be available:
 
 ### Accessing `run` result directly
 
-In most cases, you'll want to work only with the reactive variables for managing state. However, in the rare case where you want to access the result of `run` imperatively, you can do so via its return value:
+In most cases, you'll want to work only with the reactive variables for managing state. However, if you need to to access the result of `run` imperatively, you can do so via its return value:
 
 ```ts
 const [data, error] = await run();
 if (error) {
-  // Handle `error`
+  // Handle `error`. `data` will be `undefined`.
 } else {
-  // Do something with `data`
+  // Do something with `data`. `error` will be `undefined`.
 }
 ```
 
@@ -77,16 +78,17 @@ Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both wi
 
 ## Development
 
-The library is compatible with [Vue 3](https://vuejs.org) and built with [Vite](https://vitejs.dev). Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Vitest](https://vitest.dev). The following commands are available for developing and running the demo:
+useAsyncTask is compatible with [Vue 3](https://vuejs.org) and built with [Vite](https://vitejs.dev). Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Vitest](https://vitest.dev). The following commands are available:
 
-```
-pnpm run dev       # Start development server
-pnpm run build     # Create a production bundle
-pnpm run test      # Run tests
+```sh
+pnpm dev          # Start development server
+pnpm test         # Run tests once
+pnpm test:watch   # Run tests in watch mode
+pnpm build        # Bundle for production
 ```
 
 ## Credits
 
-This library uses a number of open source packages listed in [package.json](package.json).
+This library uses a number of open source packages listed in [package.json](package.json). The syntax was inspired by [SWR](https://swr.vercel.app).
 
 Thanks 🙏
