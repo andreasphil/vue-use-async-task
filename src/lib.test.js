@@ -1,53 +1,47 @@
-import { useAsyncTask } from "@/useAsyncTask";
-import { afterAll, beforeEach, describe, expect, test, vi } from "vitest";
+// import { afterAll, beforeEach, describe, expect, test, vi } from "vitest";
 import { ref } from "vue";
+import { useAsyncTask } from "./lib.ts";
+import { describe, test, beforeEach, after, mock } from "node:test";
+import assert from "node:assert/strict";
 
 describe("useAsyncTask", () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
-
-  afterAll(() => {
-    vi.useRealTimers();
-  });
-
-  test("initializes properly", () => {
+  test("initializes", () => {
     const task = useAsyncTask(() => Promise.resolve());
-    expect(task).toBeTruthy();
+    assert(task);
   });
 
   test("runs the fetcher function", () => {
-    const fetcher = vi.fn().mockResolvedValue("success");
+    const fetcher = mock.fn(() => Promise.resolve("success"));
     const task = useAsyncTask(fetcher);
     task.run();
-    expect(fetcher).toHaveBeenCalled();
+    assert.equal(fetcher.mock.callCount(), 1);
   });
 
   test("returns the data", async () => {
-    const fetcher = vi.fn().mockResolvedValue("success");
+    const fetcher = mock.fn(() => Promise.resolve("success"));
     const { run } = useAsyncTask(fetcher);
     const [data, error] = await run();
-    expect(data).toBe("success");
-    expect(error).toBe(undefined);
+    assert.equal(data, "success");
+    assert(!error);
   });
 
   test("returns an error", async () => {
-    const fetcher = vi.fn().mockRejectedValue("error");
+    const fetcher = mock.fn(() => Promise.reject("error"));
     const { run } = useAsyncTask(fetcher);
     const [data, error] = await run();
-    expect(data).toBe(undefined);
-    expect(error).toBe("error");
+    assert(!data);
+    assert.equal(error, "error");
   });
 
   test("stores the returned data", async () => {
-    const fetcher = vi.fn().mockResolvedValue("success");
+    const fetcher = mock.fn(() => Promise.resolve("success"));
     const { run, data } = useAsyncTask(fetcher);
     await run();
-    expect(data.value).toBe("success");
+    assert.equal(data.value, "success");
   });
 
   test("retains the returned data if an error occurs", async () => {
-    const fetcher = vi.fn().mockImplementation((willSucceed: boolean) => {
+    const fetcher = mock.fn((willSucceed) => {
       if (willSucceed) return Promise.resolve("success");
       else throw "error";
     });
@@ -55,65 +49,65 @@ describe("useAsyncTask", () => {
     const { run, data, error } = useAsyncTask(fetcher);
 
     await run(true);
-    expect(data.value).toBe("success");
-    expect(error.value).toBe(undefined);
+    assert.equal(data.value, "success");
+    assert(!error.value);
 
     await run(false);
-    expect(data.value).toBe("success");
-    expect(error.value).toBe("error");
+    assert.equal(data.value, "success");
+    assert.equal(error.value, "error");
   });
 
   test("sets the loading state", () => {
-    const fetcher = vi.fn().mockResolvedValue("success");
+    const fetcher = mock.fn(() => Promise.resolve("success"));
 
     const { run, isLoading } = useAsyncTask(fetcher);
-    expect(isLoading.value).toBe(false);
+    assert(!isLoading.value);
     run();
-    expect(isLoading.value).toBe(true);
+    assert(isLoading.value);
   });
 
   test("unsets the loading state in case of success", async () => {
-    const fetcher = vi.fn().mockResolvedValue("success");
+    const fetcher = mock.fn(() => Promise.resolve("success"));
     const { run, isLoading } = useAsyncTask(fetcher);
 
     await run();
-    expect(isLoading.value).toBe(false);
+    assert(!isLoading.value);
   });
 
   test("unsets the loading state in case of error", async () => {
-    const fetcher = vi.fn().mockRejectedValue("error");
+    const fetcher = mock.fn(() => Promise.reject("error"));
     const { run, isLoading } = useAsyncTask(fetcher);
 
     await run();
-    expect(isLoading.value).toBe(false);
+    assert(!isLoading.value);
   });
 
   test("stores the returned error", async () => {
-    const fetcher = vi.fn().mockRejectedValue("error");
+    const fetcher = mock.fn(() => Promise.reject("error"));
     const { run, error } = useAsyncTask(fetcher);
 
     await run();
-    expect(error.value).toBe("error");
+    assert.equal(error.value, "error");
   });
 
   test("indicates that an error exists", async () => {
-    const fetcher = vi.fn().mockRejectedValue("error");
+    const fetcher = mock.fn(() => Promise.reject("error"));
     const { run, hasError } = useAsyncTask(fetcher);
 
     await run();
-    expect(hasError.value).toBe(true);
+    assert(hasError.value);
   });
 
   test("indicates that no error exists", async () => {
-    const fetcher = vi.fn().mockResolvedValue("success");
+    const fetcher = mock.fn(() => Promise.resolve("success"));
     const { run, hasError } = useAsyncTask(fetcher);
 
     await run();
-    expect(hasError.value).toBe(false);
+    assert(!hasError.value);
   });
 
   test("resets the returned error", async () => {
-    const fetcher = vi.fn().mockImplementation((willSucceed: boolean) => {
+    const fetcher = mock.fn((willSucceed) => {
       if (willSucceed) return Promise.resolve("success");
       else throw "error";
     });
@@ -121,26 +115,26 @@ describe("useAsyncTask", () => {
     const { run, error } = useAsyncTask(fetcher);
 
     await run(false);
-    expect(error.value).toBe("error");
+    assert.equal(error.value, "error");
     await run(true);
-    expect(error.value).toBe(undefined);
+    assert(!error.value);
   });
 
   test("uses a shared loading state", () => {
     const shared = ref(false);
-    const { isLoading } = useAsyncTask(vi.fn(), { isLoading: shared });
+    const { isLoading } = useAsyncTask(mock.fn(), { isLoading: shared });
 
     // Need to use refs as operands because we want to compare the refs
     // themselves instead of their values
-    expect(isLoading === shared).toBe(true);
+    assert.equal(isLoading, shared);
   });
 
   test("uses a shared error state", () => {
     const shared = ref();
-    const { error } = useAsyncTask(vi.fn(), { error: shared });
+    const { error } = useAsyncTask(mock.fn(), { error: shared });
 
     // Need to use refs as operands because we want to compare the refs
     // themselves instead of their values
-    expect(error === shared).toBe(true);
+    assert.equal(error, shared);
   });
 });

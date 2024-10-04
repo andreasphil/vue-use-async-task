@@ -1,30 +1,15 @@
 {
   "compilerOptions": {
-    "lib": ["ES2023", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "target": "ES2022",
-    "useDefineForClassFields": true,
-
-    /* Bundler mode */
     "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "moduleResolution": "bundler",
-    "noEmit": true,
-    "resolveJsonModule": true,
-
-    /* Linting */
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strict": true,
-
-    /* Aliases */
-    "baseUrl": ".",
-    "paths": { "@/*": ["src/*"] }
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "lib": ["es2023", "DOM"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "outDir": "dist",
+    "target": "es2023"
   },
-
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/lib.ts"]
 }

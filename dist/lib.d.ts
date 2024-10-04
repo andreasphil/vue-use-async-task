@@ -39,13 +39,13 @@ shared?: {
      * }
      * ```
      */
-    run: (...args: InferArgs<F>) => Promise<[Awaited<InferReturn<F>> | undefined, undefined] | [undefined, E]>;
+    run: (...args: InferArgs<F>) => Promise<[Awaited<InferReturn<F>>, undefined] | [undefined, E]>;
     /** Return value of the task */
-    data: Ref<Awaited<InferReturn<F>> | undefined, Awaited<InferReturn<F>> | undefined>;
+    data: Ref<Awaited<InferReturn<F>>, Awaited<InferReturn<F>>>;
     /** True while the task is running */
     isLoading: Ref<boolean, boolean>;
     /** Will receive the exception thrown by the task if one occurs */
-    error: Ref<E | undefined, E | undefined> | Ref<import("vue").UnwrapRef<E> | undefined, E | import("vue").UnwrapRef<E> | undefined>;
+    error: Ref<E, E> | Ref<import("vue").UnwrapRef<E>, E | import("vue").UnwrapRef<E>>;
     /** True if an exception has been thrown */
     hasError: import("vue").ComputedRef<boolean>;
 };

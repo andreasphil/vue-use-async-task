@@ -11,24 +11,25 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/useAsyncTask.js",
-      "types": "./dist/useAsyncTask.d.ts"
+      "import": "./dist/lib.js",
+      "types": "./dist/lib.d.ts"
     }
   },
   "scripts": {
-    "dev": "vite",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "build": "vite build; tsc -p tsconfig.lib.json",
+    "dev": "esbuild src/demo.js --bundle --minify --target=es2023 --format=esm --outdir=www --sourcemap --watch --servedir=.",
+    "test": "node --test --experimental-strip-types",
+    "test:watch": "node --test --experimental-strip-types --watch",
+    "build": "pnpm build:types && pnpm build:bundle",
+    "build:types": "tsc",
+    "build:bundle": "esbuild src/lib.ts --bundle --minify --target=es2023 --format=esm --outdir=dist --sourcemap --external:vue",
     "preversion": "pnpm test && pnpm build; git add dist/"
   },
   "dependencies": {
     "vue": "^3.4.35"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.2",
-    "typescript": "^5.5.4",
-    "vite": "^5.3.5",
-    "vitest": "^2.0.5"
-  }
+    "esbuild": "^0.23.1",
+    "typescript": "^5.6.2"
+  },
+  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }
