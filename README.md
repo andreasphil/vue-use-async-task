@@ -78,7 +78,7 @@ Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both wi
 
 ## Development
 
-useAsyncTask is compatible with [Vue 3](https://vuejs.org) and built with [Vite](https://vitejs.dev). Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Vitest](https://vitest.dev). The following commands are available:
+This library is compatible with [Vue 3](https://vuejs.org) and built with [esbuild](https://esbuild.github.io). Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
 
 ```sh
 pnpm dev          # Start development server
