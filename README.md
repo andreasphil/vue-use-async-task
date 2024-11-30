@@ -12,6 +12,12 @@
 
 ## Installation
 
+From a CDN:
+
+```ts
+import { useAsyncTask } from "https://esm.sh/gh/andreasphil/vue-use-async-task@<tag>?external=vue";
+```
+
 With a package manager:
 
 ```sh
