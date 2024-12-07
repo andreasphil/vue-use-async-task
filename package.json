@@ -24,8 +24,8 @@
     "build:bundle": "esbuild src/lib.ts --bundle --minify --target=es2023 --format=esm --outdir=dist --sourcemap --external:vue",
     "preversion": "pnpm test && pnpm build; git add dist/"
   },
-  "dependencies": {
-    "vue": "^3.4.35"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "esbuild": "^0.23.1",
