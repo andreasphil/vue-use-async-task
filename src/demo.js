@@ -1,5 +1,5 @@
 import { createApp, defineComponent } from "vue/dist/vue.esm-bundler.js";
-import { useAsyncTask } from "./lib.ts";
+import { useAsyncTask } from "./useAsyncTask.ts";
 
 const App = defineComponent({
   setup() {

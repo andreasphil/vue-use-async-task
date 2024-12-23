@@ -82,6 +82,10 @@ const { run: runTaskB } = useAsyncTask(taskB, { isLoading, error });
 
 Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both will store their error in `error`.
 
+### API
+
+See [useAsyncTask.d.ts](./dist/useAsyncTask.d.ts) for all available methods and docs.
+
 ## Development
 
 This library is compatible with [Vue 3](https://vuejs.org) and built with [esbuild](https://esbuild.github.io). Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:

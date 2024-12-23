@@ -9,7 +9,9 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "outDir": "dist",
+    "skipLibCheck": true,
     "target": "es2023"
   },
-  "include": ["src/lib.ts"]
+  "include": ["src/**/*.js", "src/**/*.ts"],
+  "exclude": ["src/**/*.spec.*", "src/**/*.test.*", "src/demo.js"]
 }
