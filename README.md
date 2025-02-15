@@ -88,13 +88,13 @@ See [useAsyncTask.d.ts](./dist/useAsyncTask.d.ts) for all available methods and 
 
 ## Development
 
-This library is compatible with [Vue 3](https://vuejs.org) and built with [esbuild](https://esbuild.github.io). Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
+This library is compatible with [Vue 3](https://vuejs.org) and built with [esbuild](https://esbuild.github.io). Packages are managed by [npm](https://npmjs.org). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
 
 ```sh
-pnpm dev          # Start development server
-pnpm test         # Run tests once
-pnpm test:watch   # Run tests in watch mode
-pnpm build        # Bundle for production
+node --run dev          # Start development server
+node --run test         # Run tests once
+node --run test:watch   # Run tests in watch mode
+node --run build        # Bundle for production
 ```
 
 ## Credits
