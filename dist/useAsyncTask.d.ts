@@ -45,7 +45,7 @@ shared?: {
     /** True while the task is running */
     isLoading: Ref<boolean, boolean>;
     /** Will receive the exception thrown by the task if one occurs */
-    error: Ref<E, E> | Ref<import("vue").UnwrapRef<E>, E | import("vue").UnwrapRef<E>>;
+    error: Ref<E, E> | ([E] extends [Ref<any, any>] ? import("@vue/shared").IfAny<E, Ref<E, E>, E> : Ref<import("vue").UnwrapRef<E>, E | import("vue").UnwrapRef<E>>);
     /** True if an exception has been thrown */
     hasError: import("vue").ComputedRef<boolean>;
 };
