@@ -6,30 +6,24 @@
   "license": "MIT",
   "type": "module",
   "repository": "https://github.com/andreasphil/vue-use-async-task",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
-      "import": "./dist/useAsyncTask.js",
-      "types": "./dist/useAsyncTask.d.ts"
+      "import": "./mod.js",
+      "types": "./mod.d.ts"
     }
   },
   "scripts": {
-    "dev": "esbuild src/demo.js --bundle --format=esm --outdir=www --watch --servedir=.",
     "test": "node --test",
     "test:watch": "node --test --watch",
-    "build": "node --run build:types && node --run build:bundle",
+    "build": "node --run build:types",
     "build:types": "tsc",
-    "build:bundle": "esbuild src/useAsyncTask.ts --bundle --format=esm --outdir=dist --external:vue",
-    "preversion": "node --run test && node --run build; git add dist/",
+    "preversion": "node --run test && node --run build && git add ./*.d.ts",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "esbuild": "^0.25.9",
     "typescript": "^5.9.2"
   }
 }

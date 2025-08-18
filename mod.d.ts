@@ -1,21 +1,24 @@
-import { type Ref } from "vue";
-/** Returns the parameters of a generic function T */
-export type InferArgs<T> = T extends (...t: [...infer Params]) => any ? Params : never;
-/** Returns the return value of a generic function T */
-export type InferReturn<T> = T extends (...t: any) => infer Return ? Return : never;
 /**
- * Returns a wrapper for an asynchronous function that keeps track of the
- * loading state, errors, and return value of the function.
+ * Returns the parameters of a generic function T
+ *
+ * @template T
+ * @typedef {T extends (...t: [...infer Params]) => any ? Params : never} InferArgs
  */
-export declare function useAsyncTask<F extends (...args: any[]) => Promise<any>, E = any>(
-/** Function that performs an async task */
-fetcher: F, 
 /**
- * If provided, will use existing reactive variables for storing state
- * instead of creating new ones. Useful e.g. for sharing the `isLoading`
- * state between multiple async tasks.
+ * Returns the return value of a generic function T
+ *
+ * @template T
+ * @typedef {T extends (...t: any) => infer Return ? Return : never} InferReturn
  */
-shared?: {
+/**
+ * @template {(...args: any[]) => Promise<any>} F
+ * @template E
+ * @param {F} fetcher
+ * @param {Object} [shared]
+ * @param {Ref<boolean>} [shared.isLoading]
+ * @param {Ref<E | undefined>} [shared.error]
+ */
+export function useAsyncTask<F extends (...args: any[]) => Promise<any>, E>(fetcher: F, shared?: {
     isLoading?: Ref<boolean>;
     error?: Ref<E | undefined>;
 }): {
@@ -39,13 +42,22 @@ shared?: {
      * }
      * ```
      */
-    run: (...args: InferArgs<F>) => Promise<[Awaited<InferReturn<F>>, undefined] | [undefined, E]>;
+    run: (...args: InferArgs<F>) => Promise<[Awaited<InferReturn<typeof fetcher>>, undefined] | [undefined, E]>;
     /** Return value of the task */
     data: Ref<Awaited<InferReturn<F>>, Awaited<InferReturn<F>>>;
     /** True while the task is running */
     isLoading: Ref<boolean, boolean>;
     /** Will receive the exception thrown by the task if one occurs */
-    error: Ref<E, E> | ([E] extends [Ref<any, any>] ? import("@vue/shared").IfAny<E, Ref<E, E>, E> : Ref<import("vue").UnwrapRef<E>, E | import("vue").UnwrapRef<E>>);
+    error: Ref<E, E>;
     /** True if an exception has been thrown */
     hasError: import("vue").ComputedRef<boolean>;
 };
+/**
+ * Returns the parameters of a generic function T
+ */
+export type InferArgs<T> = T extends (...t: [...infer Params]) => any ? Params : never;
+/**
+ * Returns the return value of a generic function T
+ */
+export type InferReturn<T> = T extends (...t: any) => infer Return ? Return : never;
+import type { Ref } from "vue";

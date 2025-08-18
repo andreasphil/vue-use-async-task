@@ -1,8 +1,7 @@
-// import { afterAll, beforeEach, describe, expect, test, vi } from "vitest";
-import { ref } from "vue";
-import { useAsyncTask } from "./useAsyncTask.ts";
-import { describe, test, beforeEach, after, mock } from "node:test";
 import assert from "node:assert/strict";
+import { describe, mock, test } from "node:test";
+import { ref } from "vue";
+import { useAsyncTask } from "./mod.js";
 
 describe("useAsyncTask", () => {
   test("initializes", () => {

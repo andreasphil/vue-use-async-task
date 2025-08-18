@@ -1,24 +1,59 @@
-// src/useAsyncTask.ts
+/** @import { Ref } from "vue" */
 import { computed, ref } from "vue";
-function useAsyncTask(fetcher, shared) {
+
+/**
+ * Returns the parameters of a generic function T
+ *
+ * @template T
+ * @typedef {T extends (...t: [...infer Params]) => any ? Params : never} InferArgs
+ */
+
+/**
+ * Returns the return value of a generic function T
+ *
+ * @template T
+ * @typedef {T extends (...t: any) => infer Return ? Return : never} InferReturn
+ */
+
+/**
+ * @template {(...args: any[]) => Promise<any>} F
+ * @template E
+ * @param {F} fetcher
+ * @param {Object} [shared]
+ * @param {Ref<boolean>} [shared.isLoading]
+ * @param {Ref<E | undefined>} [shared.error]
+ */
+export function useAsyncTask(fetcher, shared) {
+  // State
+  /** @type {Ref<Awaited<InferReturn<typeof fetcher>> | undefined>} */
   const data = ref();
+
+  /** @type {Ref<E | undefined>} */
+  const error = shared?.error ?? ref();
+
   const isLoading = shared?.isLoading ?? ref(false);
-  const error = shared?.error ?? ref(void 0);
   const hasError = computed(() => !!error.value);
+
+  /**
+   * @param {InferArgs<F>} args
+   * @return {Promise<[Awaited<InferReturn<typeof fetcher>>, undefined] | [undefined, E]>}
+   */
   const run = async (...args) => {
     isLoading.value = true;
-    error.value = void 0;
+    error.value = undefined;
+
     try {
       const result = await fetcher(...args);
       data.value = result;
-      return [result, void 0];
+      return [result, undefined];
     } catch (e) {
       error.value = e;
-      return [void 0, e];
+      return [undefined, e];
     } finally {
       isLoading.value = false;
     }
   };
+
   return {
     /**
      * Executes the task and updates all the state properties. Returns a tuple
@@ -48,9 +83,6 @@ function useAsyncTask(fetcher, shared) {
     /** Will receive the exception thrown by the task if one occurs */
     error,
     /** True if an exception has been thrown */
-    hasError
+    hasError,
   };
 }
-export {
-  useAsyncTask
-};

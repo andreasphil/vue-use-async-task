@@ -84,14 +84,13 @@ Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both wi
 
 ### API
 
-See [useAsyncTask.d.ts](./dist/useAsyncTask.d.ts) for all available methods and docs.
+See [mod.d.ts](./mod.d.ts) for all available methods and docs.
 
 ## Development
 
-This library is compatible with [Vue 3](https://vuejs.org) and built with [esbuild](https://esbuild.github.io). Packages are managed by [npm](https://npmjs.org). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
+This library is compatible with [Vue 3](https://vuejs.org). Packages are managed by [npm](https://npmjs.org). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
 
 ```sh
-node --run dev          # Start development server
 node --run test         # Run tests once
 node --run test:watch   # Run tests in watch mode
 node --run build        # Bundle for production
