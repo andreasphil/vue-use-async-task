@@ -5,11 +5,11 @@
     "checkJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "lib": ["es2024", "DOM"],
+    "lib": ["esnext", "DOM"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "skipLibCheck": true,
-    "target": "es2024"
+    "target": "esnext"
   },
   "include": ["**/*.js", "**/*.ts"],
   "exclude": ["**/*.spec.*", "**/*.test.*"]
