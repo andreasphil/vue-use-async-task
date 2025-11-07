@@ -9,7 +9,7 @@
   "exports": {
     ".": {
       "import": "./mod.js",
-      "types": "./mod.d.ts"
+      "types": "./dist/mod.d.ts"
     }
   },
   "scripts": {
@@ -17,7 +17,7 @@
     "test:watch": "node --test --watch",
     "build": "node --run build:types",
     "build:types": "tsc",
-    "preversion": "node --run test && node --run build && git add ./*.d.ts",
+    "preversion": "node --run test && node --run build && git add ./dist",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

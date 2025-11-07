@@ -84,7 +84,7 @@ Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both wi
 
 ### API
 
-See [mod.d.ts](./mod.d.ts) for all available methods and docs.
+See [mod.d.ts](./dist/mod.d.ts) for all available methods and docs.
 
 ## Development
 

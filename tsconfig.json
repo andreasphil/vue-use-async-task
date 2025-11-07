@@ -8,9 +8,10 @@
     "lib": ["esnext", "DOM"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "outDir": "dist",
     "skipLibCheck": true,
     "target": "esnext"
   },
   "include": ["**/*.js", "**/*.ts"],
-  "exclude": ["**/*.spec.*", "**/*.test.*"]
+  "exclude": ["**/*.spec.*", "**/*.test.*", "./dist/**/*"]
 }
