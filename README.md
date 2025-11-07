@@ -34,8 +34,7 @@ const { isLoading, data, error, hasError, run } = useAsyncTask(myAsyncTask);
 
 Example:
 
-```vue
-<script setup lang="ts">
+```ts
 import { useAsyncTask } from "vue-use-async-task";
 
 async function myAsyncTask(param: string): Promise<string> {
@@ -47,7 +46,6 @@ const { isLoading, data, error, run } = useAsyncTask(myAsyncTask);
 // You can now use run() to run the function you provided to the composable.
 // It takes the same parameters as the original function.
 run("Hello world!");
-</script>
 ```
 
 The following reactive variables will be available:
@@ -88,16 +86,16 @@ See [mod.d.ts](./dist/mod.d.ts) for all available methods and docs.
 
 ## Development
 
-This library is compatible with [Vue 3](https://vuejs.org). Packages are managed by [npm](https://npmjs.org). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
+Packages are managed by [npm](https://npmjs.org). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
 
 ```sh
 node --run test         # Run tests once
 node --run test:watch   # Run tests in watch mode
-node --run build        # Bundle for production
+node --run build        # Typecheck and emit declarations
 ```
 
 ## Credits
 
-This library uses a number of open source packages listed in [package.json](package.json). The syntax was inspired by [SWR](https://swr.vercel.app).
+This library uses a number of open source packages listed in [package.json](package.json).
 
 Thanks 🙏
