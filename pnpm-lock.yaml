@@ -12,6 +12,9 @@ importers:
         specifier: ^3.0.0
         version: 3.5.26(typescript@5.9.3)
     devDependencies:
+      '@types/node':
+        specifier: ^25.0.6
+        version: 25.0.6
       typescript:
         specifier: ^5.9.2
         version: 5.9.3
@@ -37,6 +40,9 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
+
+  '@types/node@25.0.6':
+    resolution: {integrity: sha512-NNu0sjyNxpoiW3YuVFfNz7mxSQ+S4X2G28uqg2s+CzoqoQjLPsWSbsFFyztIAqt2vb8kfEAsJNepMGPTxFDx3Q==}
 
   '@vue/compiler-core@3.5.26':
     resolution: {integrity: sha512-vXyI5GMfuoBCnv5ucIT7jhHKl55Y477yxP6fc4eUswjP8FG3FFVFd41eNDArR+Uk3QKn2Z85NavjaxLxOC19/w==}
@@ -101,6 +107,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@7.16.0:
+    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
   vue@3.5.26:
     resolution: {integrity: sha512-SJ/NTccVyAoNUJmkM9KUqPcYlY+u8OVL1X5EW9RIs3ch5H2uERxyyIUI4MRxVCSOiEcupX9xNGde1tL9ZKpimA==}
     peerDependencies:
@@ -125,6 +134,10 @@ snapshots:
       '@babel/helper-validator-identifier': 7.28.5
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
+
+  '@types/node@25.0.6':
+    dependencies:
+      undici-types: 7.16.0
 
   '@vue/compiler-core@3.5.26':
     dependencies:
@@ -203,6 +216,8 @@ snapshots:
   source-map-js@1.2.1: {}
 
   typescript@5.9.3: {}
+
+  undici-types@7.16.0: {}
 
   vue@3.5.26(typescript@5.9.3):
     dependencies:
