@@ -1,4 +1,6 @@
-/** @import { Ref } from "vue" */
+// @ts-check
+
+/** @import {Ref} from "vue" */
 import { computed, ref } from "vue";
 
 /**
@@ -36,7 +38,7 @@ export function useAsyncTask(fetcher, shared) {
 
   /**
    * @param {InferArgs<F>} args
-   * @return {Promise<[Awaited<InferReturn<typeof fetcher>>, undefined] | [undefined, E]>}
+   * @returns {Promise<[Awaited<InferReturn<typeof fetcher>>, undefined] | [undefined, E]>}
    */
   const run = async (...args) => {
     isLoading.value = true;
@@ -56,24 +58,21 @@ export function useAsyncTask(fetcher, shared) {
 
   return {
     /**
-     * Executes the task and updates all the state properties. Returns a tuple
-     * of the shape `[data, error]` that contains the result of the task. If
-     * the task succeeded, `data` will be set to the return value (if one
-     * exists), `error` will be undefined. If the task threw, `data` will be
-     * undefined and `error` will be set to the value that was thrown. Note
-     * that `run` itself never throws, so you don't need to catch anything.
+     * Executes the task and updates all the state properties. Returns a tuple of the shape `[data,
+     * error]` that contains the result of the task. If the task succeeded, `data` will be set to
+     * the return value (if one exists), `error` will be undefined. If the task threw, `data` will
+     * be undefined and `error` will be set to the value that was thrown. Note that `run` itself
+     * never throws, so you don't need to catch anything.
      *
      * Example:
      *
-     * ```
-     * const { run } = useAsyncTask(myTask);
-     * const [data, error] = await run();
-     * if (error) {
-     *   // Handle error here
-     * } else {
-     *   // Do something with data here
-     * }
-     * ```
+     *     const { run } = useAsyncTask(myTask);
+     *     const [data, error] = await run();
+     *     if (error) {
+     *       // Handle error here
+     *     } else {
+     *       // Do something with data here
+     *     }
      */
     run,
     /** Return value of the task */

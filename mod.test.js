@@ -121,7 +121,10 @@ describe("useAsyncTask", () => {
 
   test("uses a shared loading state", () => {
     const shared = ref(false);
-    const { isLoading } = useAsyncTask(mock.fn(async () => {}), { isLoading: shared });
+    const { isLoading } = useAsyncTask(
+      mock.fn(async () => {}),
+      { isLoading: shared },
+    );
 
     // Need to use refs as operands because we want to compare the refs
     // themselves instead of their values
@@ -130,7 +133,10 @@ describe("useAsyncTask", () => {
 
   test("uses a shared error state", () => {
     const shared = ref();
-    const { error } = useAsyncTask(mock.fn(async () => {}), { error: shared });
+    const { error } = useAsyncTask(
+      mock.fn(async () => {}),
+      { error: shared },
+    );
 
     // Need to use refs as operands because we want to compare the refs
     // themselves instead of their values
