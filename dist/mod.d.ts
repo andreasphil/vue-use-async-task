@@ -14,13 +14,13 @@
  * @template {(...args: any[]) => Promise<any>} F
  * @template E
  * @param {F} fetcher
- * @param {Object} [shared]
+ * @param {object} [shared]
  * @param {Ref<boolean>} [shared.isLoading]
  * @param {Ref<E | undefined>} [shared.error]
  */
 export function useAsyncTask<F extends (...args: any[]) => Promise<any>, E>(fetcher: F, shared?: {
-    isLoading?: Ref<boolean>;
-    error?: Ref<E | undefined>;
+    isLoading?: Ref<boolean, boolean> | undefined;
+    error?: Ref<E | undefined, E | undefined> | undefined;
 }): {
     /**
      * Executes the task and updates all the state properties. Returns a tuple
@@ -44,11 +44,11 @@ export function useAsyncTask<F extends (...args: any[]) => Promise<any>, E>(fetc
      */
     run: (...args: InferArgs<F>) => Promise<[Awaited<InferReturn<typeof fetcher>>, undefined] | [undefined, E]>;
     /** Return value of the task */
-    data: Ref<Awaited<InferReturn<F>>, Awaited<InferReturn<F>>>;
+    data: Ref<Awaited<InferReturn<F>> | undefined, Awaited<InferReturn<F>> | undefined>;
     /** True while the task is running */
     isLoading: Ref<boolean, boolean>;
     /** Will receive the exception thrown by the task if one occurs */
-    error: Ref<E, E>;
+    error: Ref<E | undefined, E | undefined>;
     /** True if an exception has been thrown */
     hasError: import("vue").ComputedRef<boolean>;
 };

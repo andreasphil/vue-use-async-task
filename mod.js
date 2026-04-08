@@ -47,8 +47,8 @@ export function useAsyncTask(fetcher, shared) {
       data.value = result;
       return [result, undefined];
     } catch (e) {
-      error.value = e;
-      return [undefined, e];
+      error.value = /** @type {E} */ (e);
+      return [undefined, /** @type {E} */ (e)];
     } finally {
       isLoading.value = false;
     }
