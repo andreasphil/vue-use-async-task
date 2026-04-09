@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, mock, test } from "node:test";
 import { ref } from "vue";
-import { useAsyncTask } from "./mod.js";
+import { useAsyncTask } from "./vueUseAsyncTask.js";
 
 describe("useAsyncTask", () => {
   test("initializes", () => {

@@ -21,7 +21,7 @@ import { useAsyncTask } from "https://esm.sh/gh/andreasphil/vue-use-async-task@<
 With a package manager:
 
 ```sh
-npm i github:andreasphil/vue-use-async-task#<tag>
+pnpm i github:andreasphil/vue-use-async-task#<tag>
 ```
 
 ## Usage
@@ -82,7 +82,7 @@ Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both wi
 
 ### API
 
-See [mod.d.ts](./dist/mod.d.ts) for all available methods and docs.
+See [vueUseAsyncTask.d.ts](./dist/vueUseAsyncTask.d.ts) for all available methods and docs.
 
 ## Development
 

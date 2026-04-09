@@ -8,8 +8,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./mod.js",
-      "types": "./dist/mod.d.ts"
+      "import": "./vueUseAsyncTask.js",
+      "types": "./dist/vueUseAsyncTask.d.ts"
     }
   },
   "scripts": {
