@@ -10,20 +10,6 @@
 - 🦾 Works with any function that returns a promise
 - 👌 Fully typed and tested
 
-## Installation
-
-From a CDN:
-
-```ts
-import { useAsyncTask } from "https://esm.sh/gh/andreasphil/vue-use-async-task@<tag>?external=vue";
-```
-
-With a package manager:
-
-```sh
-pnpm i github:andreasphil/vue-use-async-task#<tag>
-```
-
 ## Usage
 
 `useAsyncTask` is a Vue composable that returns a number of reactive variables commonly needed for handling state etc. when doing asynchronous work in components:
@@ -35,7 +21,7 @@ const { isLoading, data, error, hasError, run } = useAsyncTask(myAsyncTask);
 Example:
 
 ```ts
-import { useAsyncTask } from "vue-use-async-task";
+import { useAsyncTask } from "vueUseAsyncTask.js";
 
 async function myAsyncTask(param: string): Promise<string> {
   // Perform some async task, e.g. an API call
@@ -79,23 +65,3 @@ const { run: runTaskB } = useAsyncTask(taskB, { isLoading, error });
 ```
 
 Now `isLoading` will be `true` if either `taskA` or `taskB` are running. Both will store their error in `error`.
-
-### API
-
-See [vueUseAsyncTask.d.ts](./dist/vueUseAsyncTask.d.ts) for all available methods and docs.
-
-## Development
-
-Packages are managed by [pnpm](https://pnpm.io). Tests are powered by [Node.js' test runner](https://nodejs.org/en/learn/test-runner/introduction). The following commands are available:
-
-```sh
-node --run test         # Run tests once
-node --run test:watch   # Run tests in watch mode
-node --run build        # Typecheck and emit declarations
-```
-
-## Credits
-
-This library uses a number of open source packages listed in [package.json](package.json).
-
-Thanks 🙏

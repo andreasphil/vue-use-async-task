@@ -1,30 +1,7 @@
 {
-  "name": "@andreasphil/vue-use-async-task",
-  "version": "0.8.0",
-  "description": "Composable for state and results of asynchronous tasks in Vue",
-  "license": "MIT",
-  "author": "Andreas Philippi",
-  "repository": "https://github.com/andreasphil/vue-use-async-task",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./vueUseAsyncTask.js",
-      "types": "./dist/vueUseAsyncTask.d.ts"
-    }
-  },
-  "scripts": {
-    "test": "node --test",
-    "test:watch": "node --test --watch",
-    "build": "node --run build:types",
-    "build:types": "tsc",
-    "preversion": "node --run test && node --run build && git add ./dist",
-    "typecheck": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@types/node": "^25.5.2",
-    "typescript": "^6.0.2"
-  },
   "peerDependencies": {
     "vue": "^3.0.0"
-  }
+  },
+  "packageManager": "pnpm@10.33.0"
 }
