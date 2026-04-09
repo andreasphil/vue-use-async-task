@@ -1,3 +1,4 @@
+// @ts-check
 import assert from "node:assert/strict";
 import { describe, mock, test } from "node:test";
 import { ref } from "vue";
